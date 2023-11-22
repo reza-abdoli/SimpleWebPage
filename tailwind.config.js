@@ -1,7 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./dist/*.html'],
+  darkMode: 'class',
+  content: ["./dest/*.{html,js}"],
 
   theme: {
     fontFamily: {
@@ -11,7 +12,11 @@ module.exports = {
       'sr': '600px',
       ...defaultTheme.screens,
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'preview-bl': "url('../files/pv.jpg')"
+      }
+    },
   },
   plugins: [],
 }
