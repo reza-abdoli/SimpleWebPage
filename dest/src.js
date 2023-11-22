@@ -40,35 +40,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  var darkClick = document.querySelector(".dark-mode");
-  darkClick.addEventListener('click', function (event) {
+var darkClick = document.querySelectorAll(".dark-mode");
+var labels = document.querySelectorAll(".dark-label");
+darkClick.forEach(function (params) {
+  params.addEventListener('click', function (params) {
     document.body.classList.toggle('dark');
-    document.getElementById("dark-label").classList.toggle("bg-yellow-100")
-  });
-});
-
+    labels.forEach((label) => label.classList.toggle("bg-yellow-100"))
+  })
+})
 
 let menu = document.querySelector(".menu")
 var bars = document.getElementById("bars");
 var bar_3 = document.getElementById("bar-3");
 var xMark = document.getElementById("x-mark");
+const classToggle = (el, ...args) => args.map(e => el.classList.toggle(e))
 bars.addEventListener('click', function () {
 
   if (bars.classList.contains('bar-on')) {
+
     bars.classList.remove('bar-on')
     bar_3.classList.add("hidden")
-    menu.classList.remove("-left-72")
-    menu.classList.add("left-0")
-    xMark.classList.remove("hidden")
-    xMark.classList.add("block")
+    classToggle(menu, "-left-72", "left-0");
+    classToggle(xMark, "hidden", "block");
+
   } else {
     bars.classList.add('bar-on')
-    bar_3.classList.remove("hidden")
-    bar_3.classList.add("block")
-    menu.classList.remove("left-0")
-    menu.classList.add("-left-72")
-    xMark.classList.remove("block")
-    xMark.classList.add("hidden")
+    classToggle(menu, "-left-72", "left-0");
+    classToggle(xMark, "hidden", "block");
+    classToggle(bar_3, "hidden", "block");
   }
 });
